@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            height: 100vh;
+            background-color: royalblue;
+        }
+        .section{
+            height: 100vh;
+            background-color: bisque;
+        }
+        .sectionCard{
+            height: 100vh;
+            display: flex;
+            background-color: aqua;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap:20px;
+            /* transform: translateY(50px); */
+        }
+        .card{
+            opacity: 0;
+            font-size: 3rem;
+            transform: translateY(100px);
+        }
+    </style>
+</head>
+<body>
+    <section></section>
+    <div class="section">
+        <div class="sectionCard">
+            <div class="card card1">Add</div>
+            <div class="card card2">Send</div>
+            <div class="card card3">Exchange</div>
+        </div>
+    </div>
+
+    <section></section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+
+
+<script>
+    let x = gsap.timeline({
+        scrollTrigger : {
+        trigger :".section",
+        scrub:true,
+        pin:true,
+        start : "top top",
+        end : "+=300%",
+        // markers:true,
+    }
+    })
+
+    x.to(".card1",{
+        opacity : 1,
+        y:0
+    })
+    x.to(".card2",{
+        opacity : 1,
+        y:0
+    },"+=0.5")
+    x.to(".card3",{
+        opacity : 1,
+        y:0
+    })
+</script>
+</body>
+</html>

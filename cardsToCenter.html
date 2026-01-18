@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .x{
+            height: 250px;
+            width: 200px;
+            position: absolute;
+        }
+        .card1{
+            background-color: orange;
+            z-index: 1;
+        }
+        .card2{
+            background-color: orangered;
+            left: 67rem;
+            top: 21rem;
+            z-index: 2;
+        }
+        .card3{
+            background-color: plum;
+            z-index: 3;
+            left: 67rem;
+        }
+        .card4{
+            background-color: cadetblue;
+            z-index: 4;
+            /* left: 30px; */
+            top : 21rem;
+        }
+        h1{
+            font-size: 9vw;
+            position: absolute;
+            z-index: 0;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .container{
+            position: relative;
+        }
+        section , .container{
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <section></section>
+    <div class="container">
+        <h1>Hello Guys</h1>
+        <div class="x card1"></div>
+        <div class="x card2"></div>
+        <div class="x card3"></div>
+        <div class="x card4"></div>
+    </div>
+    <section></section>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+        
+        let x = gsap.timeline({
+            duration:10,
+            scrollTrigger : {
+                trigger : ".container",
+                scrub :true,
+                pin:true,
+                start : "top top",
+                end : "bottom center",
+                markers:true,
+            }
+        })
+        x.to("h1",{
+            fontSize : "3vw"
+        })
+        x.to([".card1",".card2",".card3",".card4"],{
+            fontSize : "3vw",
+            top: "40%",
+            left: "50%",
+            xPercent : -50,
+            yPercent : -50,
+            stagger:0.6
+        })
+    </script>
+</body>
+</html>
